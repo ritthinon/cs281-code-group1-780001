@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2018 at 03:02 PM
+-- Generation Time: Apr 20, 2018 at 06:33 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `testdb`
+-- Database: `book2hand`
 --
 
 -- --------------------------------------------------------
@@ -49,6 +49,24 @@ INSERT INTO `accounts` (`Name`, `Username`, `Password`, `Address`, `Email`, `Pho
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likepd`
+--
+
+CREATE TABLE `likepd` (
+  `ProductID` int(11) NOT NULL,
+  `Username` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `likepd`
+--
+
+INSERT INTO `likepd` (`ProductID`, `Username`) VALUES
+(0, 'ooad');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -67,16 +85,15 @@ CREATE TABLE `product` (
   `OtherDelivery` varchar(20) DEFAULT NULL,
   `OtherDeliveryPrice` int(11) DEFAULT NULL,
   `ImageLink` varchar(100) DEFAULT NULL,
-  `SellerID` int(11) NOT NULL
+  `Seller` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`ProductID`, `ProductName`, `PricePerUnit`, `Stock`, `Description`, `Tag1`, `Tag2`, `Tag3`, `ThaiPostRegisteredMail`, `ThaiPostEMS`, `Kerry`, `OtherDelivery`, `OtherDeliveryPrice`, `ImageLink`, `SellerID`) VALUES
-(0, 'Gintama', 60, 1, ' Gintama', 'à¸à¸²à¸£à', 'None', 'None', 50, 100, NULL, NULL, NULL, 'upload/à¸«à¸™à¸±à¸‡à¸ªà¸·à¸­à¸”à¸±à¸¡à¸¡à¸µà¹ˆ_1.jpg', 1),
-(1, 'à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹', 300, 1, ' à¸ªà¸ à¸²à¸ž 99%', 'à¸™à¸´à¸¢à', 'None', 'None', 50, 70, NULL, NULL, NULL, 'upload/à¸«à¸™à¸±à¸‡à¸ªà¸·à¸­à¸”à¸±à¸¡à¸¡à¸µà¹ˆ_2.jpg', 1);
+INSERT INTO `product` (`ProductID`, `ProductName`, `PricePerUnit`, `Stock`, `Description`, `Tag1`, `Tag2`, `Tag3`, `ThaiPostRegisteredMail`, `ThaiPostEMS`, `Kerry`, `OtherDelivery`, `OtherDeliveryPrice`, `ImageLink`, `Seller`) VALUES
+(0, 'Gintama', 60, 1, ' Gintama', 'manga', 'None', 'None', 50, 70, NULL, NULL, NULL, 'upload/à¸«à¸™à¸±à¸‡à¸ªà¸·à¸­à¸”à¸±à¸¡à¸¡à¸µà¹ˆ_1.jpg', 'ooad');
 
 --
 -- Indexes for dumped tables
@@ -87,6 +104,12 @@ INSERT INTO `product` (`ProductID`, `ProductName`, `PricePerUnit`, `Stock`, `Des
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`Username`);
+
+--
+-- Indexes for table `likepd`
+--
+ALTER TABLE `likepd`
+  ADD PRIMARY KEY (`ProductID`,`Username`);
 
 --
 -- Indexes for table `product`
